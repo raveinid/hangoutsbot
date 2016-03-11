@@ -1190,7 +1190,8 @@ class SlackRTM(object):
 #            else:
 #                print('slackrtm: NO image in message: "%s"' % event.text)
             message = chatMessageEvent2SlackText(event.conv_event)
-            message = u'%s <ho://%s/%s| >' % (message, event.conv_id, event.user_id.chat_id)
+            message = u'%s' % (message)
+#            message = u'%s <ho://%s/%s| >' % (message, event.conv_id, event.user_id.chat_id)
             logger.debug("sending to channel %s: %s", sync.channelid, message.encode('utf-8'))
             self.slack.api_call('chat.postMessage',
                                 channel=sync.channelid,
@@ -1221,7 +1222,8 @@ class SlackRTM(object):
             # LEAVE
             else:
                 message = u'%s has left _%s_' % (names, honame)
-            message = u'%s <ho://%s/%s| >' % (message, event.conv_id, event.user_id.chat_id)
+            message = u'%s' % (message)
+#            message = u'%s <ho://%s/%s| >' % (message, event.conv_id, event.user_id.chat_id)
             logger.debug("sending to channel/group %s: %s", sync.channelid, message)
             self.slack.api_call('chat.postMessage',
                                 channel=sync.channelid,
@@ -1238,7 +1240,8 @@ class SlackRTM(object):
             if sync.hotag:
                 hotagaddendum = ' _%s_' % sync.hotag
             message = u'%s has renamed the Hangout%s to _%s_' % (invitee, hotagaddendum, name)
-            message = u'%s <ho://%s/%s| >' % (message, event.conv_id, event.user_id.chat_id)
+            message = u'%s' % (message)
+#            message = u'%s <ho://%s/%s| >' % (message, event.conv_id, event.user_id.chat_id)
             logger.debug("sending to channel/group %s: %s", sync.channelid, message)
             self.slack.api_call('chat.postMessage',
                                 channel=sync.channelid,
